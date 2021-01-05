@@ -1,7 +1,7 @@
 package com.online.taxi.userauthority.user.controller;
 
 import com.online.taxi.userauthority.user.service.IUserService;
-import com.online_taxi.common.entity.RespResult;
+import com.online_taxi.entity.RespResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
