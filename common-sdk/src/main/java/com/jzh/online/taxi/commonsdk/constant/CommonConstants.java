@@ -32,4 +32,9 @@ public class CommonConstants {
      * 冒号间隔符
      */
     public static final String COLON_DELIMITER = ":";
+
+    /**
+     * 最大查询数量
+     */
+    public static final int MAX_IN_SIZE = 1000;
 }

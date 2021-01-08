@@ -1,13 +1,11 @@
 package com.jzh.online.taxi.commonsdk.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder(toBuilder = true)
 public class BaseDTO {
     @NonNull
     private String operatorId;

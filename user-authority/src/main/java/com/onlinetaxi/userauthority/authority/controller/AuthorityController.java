@@ -2,7 +2,7 @@ package com.onlinetaxi.userauthority.authority.controller;
 
 import com.jzh.online.taxi.commonsdk.entity.RespResult;
 import com.jzh.online.taxi.commonsdk.exception.RestException;
-import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityDTO;
+import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInput;
 import com.onlinetaxi.userauthority.authority.service.IAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +20,8 @@ public class AuthorityController {
     private IAuthorityService authorityService;
 
     @PostMapping("/v1/authority")
-    public RespResult<Void> createAuthority(@Valid @RequestBody AuthorityDTO authorityDTO) throws RestException {
-        authorityService.createAuthority(authorityDTO);
+    public RespResult<Void> createAuthority(@Valid @RequestBody AuthorityInput authorityInput) throws RestException {
+        authorityService.createAuthority(authorityInput);
         return new RespResult<>();
     }
 }
