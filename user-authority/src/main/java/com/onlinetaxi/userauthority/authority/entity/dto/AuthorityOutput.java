@@ -10,9 +10,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthorityOutput {
-    private String Id;
+    private String id;
     private String authorityName;
     private String description;
     private LocalDateTime createTime;
+    private String creatorName;
     private LocalDateTime updateTime;
+    private String updaterName;
 }

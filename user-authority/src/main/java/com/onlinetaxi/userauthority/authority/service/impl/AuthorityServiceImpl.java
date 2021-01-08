@@ -10,14 +10,15 @@ import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInput;
 import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityOutput;
 import com.onlinetaxi.userauthority.authority.entity.po.AuthorityPO;
 import com.onlinetaxi.userauthority.authority.service.IAuthorityService;
+import com.onlinetaxi.userauthority.common.constant.UserAuthorityConstants;
 import com.onlinetaxi.userauthority.common.exception.ErrorCodeEnum;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,17 +27,16 @@ public class AuthorityServiceImpl implements IAuthorityService {
     @Autowired
     private IAuthorityDAO authorityDAO;
 
-    private static final Pattern UPPERCASE_PATTERN = Pattern.compile("^[A-Z_]+$");
-
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void createAuthority(AuthorityInput authorityInput) throws RestException {
         // 校验权限名称是否符合规则
-        if (!UPPERCASE_PATTERN.matcher(authorityInput.getAuthorityName()).matches()) {
+        if (!UserAuthorityConstants.UPPERCASE_AND_UNDERLINE_PATTERN.matcher(authorityInput.getAuthorityName()).matches()) {
             throw new RestException(ErrorCodeEnum.INVALID_AUTHORITY_NAME.getCode(), ErrorCodeEnum.INVALID_AUTHORITY_NAME.getDesc());
         }
         // 校验权限是否已经存在
         AuthorityPO authorityPO = authorityDAO.selectOne(Wrappers.<AuthorityPO>lambdaQuery()
-                .eq(AuthorityPO::getAuthorityName, authorityInput.getAuthorityName()));
+                .eq(AuthorityPO::getAuthorityName, authorityInput.getAuthorityName()).eq(AuthorityPO::getIsDeleted, false));
         if (!Objects.isNull(authorityPO)) {
             throw new RestException(ErrorCodeEnum.AUTHORITY_NAME_ALREADY_EXISTS.getCode(), ErrorCodeEnum.AUTHORITY_NAME_ALREADY_EXISTS.getDesc());
         }
@@ -64,15 +64,9 @@ public class AuthorityServiceImpl implements IAuthorityService {
      * @return
      */
     private AuthorityPO generateNewAuthority(AuthorityInput authorityInput) {
-        AuthorityPO authorityPO = new AuthorityPO().toBuilder().Id(UUID.randomUUID().toString()).authorityName(authorityInput.getAuthorityName())
-                .description(authorityInput.getDescription()).build();
-        authorityPO.setCreateTime(LocalDateTime.now());
-        authorityPO.setCreatorId(authorityInput.getOperatorId());
-        authorityPO.setCreatorName(authorityInput.getOperatorName());
-        authorityPO.setUpdateTime(LocalDateTime.now());
-        authorityPO.setUpdaterId(authorityInput.getOperatorId());
-        authorityPO.setUpdaterName(authorityInput.getOperatorName());
-        authorityPO.setIsDeleted(false);
+        AuthorityPO authorityPO = new AuthorityPO().toBuilder().id(UUID.randomUUID().toString())
+                .authorityName(authorityInput.getAuthorityName()).description(authorityInput.getDescription()).build();
+        authorityPO.initPO(authorityInput);
         return authorityPO;
     }
 

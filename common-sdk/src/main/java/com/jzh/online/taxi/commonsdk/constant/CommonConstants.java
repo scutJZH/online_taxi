@@ -1,5 +1,7 @@
 package com.jzh.online.taxi.commonsdk.constant;
 
+import java.util.regex.Pattern;
+
 public class CommonConstants {
     private CommonConstants() {}
 

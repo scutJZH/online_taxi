@@ -1,4 +1,4 @@
-package com.onlinetaxi.userauthority.authority.entity.po;
+package com.onlinetaxi.userauthority.role.entity.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,16 +11,16 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Builder(toBuilder = true)
-@TableName("Authority")
-public class AuthorityPO extends BasePO {
+@TableName("ROLE")
+public class RolePO extends BasePO {
     @TableId("ID")
     private String id;
 
     /**
-     * 权限名称
+     * 角色名称
      */
-    @TableField("AUTHORITY_NAME")
-    private String authorityName;
+    @TableField("ROLE_NAME")
+    private String roleName;
 
     /**
      * 描述

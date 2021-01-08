@@ -54,4 +54,14 @@ public class BasePO {
      */
     @TableField("IS_DELETED")
     private Boolean isDeleted;
+    
+    public void initPO(BaseDTO baseDTO) {
+        this.setCreateTime(LocalDateTime.now());
+        this.setCreatorId(baseDTO.getOperatorId());
+        this.setCreatorName(baseDTO.getOperatorName());
+        this.setUpdateTime(LocalDateTime.now());
+        this.setUpdaterId(baseDTO.getOperatorId());
+        this.setUpdaterName(baseDTO.getOperatorName());
+        this.setIsDeleted(false);
+    }
 }
