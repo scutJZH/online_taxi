@@ -1,0 +1,12 @@
+server:
+  port: 7000
+eureka:
+  instance:
+    hostname: eureka.com
+  client:
+    service-url:
+      defaultZone: http://eureka.com:7000/eureka
+
+spring:
+  application:
+    name: eureka-service
