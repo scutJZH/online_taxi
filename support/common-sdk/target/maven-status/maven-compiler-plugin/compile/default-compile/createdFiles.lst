@@ -1,0 +1,9 @@
+com\jzh\online\taxi\commonsdk\entity\PageResult.class
+com\jzh\online\taxi\commonsdk\constant\PageConstants.class
+com\jzh\online\taxi\commonsdk\entity\BaseInDTO.class
+com\jzh\online\taxi\commonsdk\constant\CommonConstants.class
+com\jzh\online\taxi\commonsdk\entity\BasePO.class
+com\jzh\online\taxi\commonsdk\exception\RestException.class
+com\jzh\online\taxi\commonsdk\entity\Query.class
+com\jzh\online\taxi\commonsdk\entity\RespResult.class
+com\jzh\online\taxi\commonsdk\entity\Operator.class
