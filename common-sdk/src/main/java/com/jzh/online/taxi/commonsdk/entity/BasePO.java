@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
 public class BasePO {
     /**
      * 创建时间
@@ -55,13 +54,13 @@ public class BasePO {
     @TableField("IS_DELETED")
     private Boolean isDeleted;
     
-    public void initPO(BaseDTO baseDTO) {
+    public void initPO(BaseInDTO baseInDTO) {
         this.setCreateTime(LocalDateTime.now());
-        this.setCreatorId(baseDTO.getOperatorId());
-        this.setCreatorName(baseDTO.getOperatorName());
+        this.setCreatorId(baseInDTO.getOperator().getOperatorId());
+        this.setCreatorName(baseInDTO.getOperator().getOperatorName());
         this.setUpdateTime(LocalDateTime.now());
-        this.setUpdaterId(baseDTO.getOperatorId());
-        this.setUpdaterName(baseDTO.getOperatorName());
+        this.setUpdaterId(baseInDTO.getOperator().getOperatorId());
+        this.setUpdaterName(baseInDTO.getOperator().getOperatorName());
         this.setIsDeleted(false);
     }
 }

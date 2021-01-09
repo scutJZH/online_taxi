@@ -30,6 +30,7 @@
         <mybatis-plus.version>3.4.1</mybatis-plus.version>
         <lombok.version>1.18.16</lombok.version>
         <commons-collections.version>3.2.2</commons-collections.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
     </properties>
 
 
@@ -89,6 +90,13 @@
                 <artifactId>mybatis-plus-annotation</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Builder(toBuilder = true)
-@TableName("ROLE")
+@TableName("`ROLE`")
 public class RolePO extends BasePO {
     @TableId("ID")
     private String id;

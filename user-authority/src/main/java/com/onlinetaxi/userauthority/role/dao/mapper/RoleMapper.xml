@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlinetaxi.userauthority.role.dao.IRoleDAO">
+    <resultMap id="roleMap" type="com.onlinetaxi.userauthority.role.entity.dto.RoleDTO">
+        <id column="ID" property="id"/>
+        <result column="ROLE_NAME" property="roleName"/>
+        <result column="DESCRIPTION" property="description"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="CREATOR_ID" property="creatorId"/>
+        <result column="CREATOR_NAME" property="creatorName"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+        <result column="UPDATER_ID" property="updaterId"/>
+        <result column="UPDATER_NAME" property="updaterName"/>
+        <collection property="authorityList" ofType="com.onlinetaxi.userauthority.authority.entity.dto.AuthorityDTO">
+            <id column="ID" property="id"/>
+            <result column="AUTHORITY_NAME" property="authorityName"/>
+            <result column="DESCRIPTION" property="description"/>
+            <result column="CREATOR_ID" property="creatorId"/>
+            <result column="CREATOR_NAME" property="creatorName"/>
+            <result column="UPDATE_TIME" property="updateTime"/>
+            <result column="UPDATER_ID" property="updaterId"/>
+            <result column="UPDATER_NAME" property="updaterName"/>
+        </collection>
+    </resultMap>
+
+    <sql id="roleFields">
+        `ROLE`.ID, `ROLE`.ROLE_NAME, `ROLE`.DESCRIPTION, `ROLE`.CREATE_TIME, `ROLE`.CREATOR_ID, `ROLE`.CREATOR_NAME,
+        `ROLE`.UPDATE_TIME, `ROLE`.UPDATER_ID, `ROLE`.UPDATER_NAME
+    </sql>
+
+    <sql id="authorityFields">
+        AUTHORITY.ID, AUTHORITY.AUTHORITY_NAME, AUTHORITY.DESCRIPTION, AUTHORITY.CREATE_TIME, AUTHORITY.CREATOR_ID,
+        AUTHORITY.CREATOR_NAME, AUTHORITY.UPDATE_TIME, AUTHORITY.UPDATER_ID, AUTHORITY.UPDATER_NAME
+    </sql>
+
+    <select id="listRoleByIds" resultMap="roleMap">
+        SELECT <include refid="roleFields"/>, <include refid="authorityFields"/>
+        FROM `ROLE` LEFT JOIN ROLE_AUTHORITY_RELATION ON `ROLE`.ID = ROLE_AUTHORITY_RELATION.ROLE_ID
+            LEFT JOIN AUTHORITY ON ROLE_AUTHORITY_RELATION.AUTHORITY_ID = AUTHORITY.ID AND AUTHORITY.IS_DELETED = 0
+        WHERE
+            `ROLE`.IS_DELETED = 0
+            AND `ROLE`.ID IN
+            <foreach collection="roleIds" item="roleId" index="index" open="(" separator="," close=")">
+                #{roleId}
+            </foreach>
+    </select>
+</mapper>

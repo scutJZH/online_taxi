@@ -1,9 +1,9 @@
 package com.jzh.online.taxi.commonsdk.entity;
 
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.jzh.online.taxi.commonsdk.constant.CommonConstants;
 import com.sun.deploy.util.StringUtils;
 import lombok.Data;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,8 +11,6 @@ import java.util.List;
 
 @Data
 public class Query {
-    private static final Integer ONE = 1;
-
     protected static final List<String> SUPPORT_SORT_DIRECTION_LIST = Arrays.asList("asc", "ASC", "desc", "DESC");
 
     public String getDefaultSortBy() {
@@ -64,9 +62,8 @@ public class Query {
     private List<String> sortDirectionList;
 
     /**
-     * 连接排序，调用该方法前必须先调用{@link #init}方法
-     *
-     * @history 2020/03/02 zhaoaohan@tp-link.com.cn create
+     * 连接排序
+     * @return
      */
     public String joinSort() {
         if (CollectionUtils.isEmpty(sortByList)) {
@@ -82,8 +79,6 @@ public class Query {
 
     /**
      * 检查并处理排序字段和排序
-     *
-     * @history 2020/03/02 zhaoaohan@tp-link.com.cn create
      */
     private void checkAndCorrectSort() {
         if (!CollectionUtils.isEmpty(sortByList)) {

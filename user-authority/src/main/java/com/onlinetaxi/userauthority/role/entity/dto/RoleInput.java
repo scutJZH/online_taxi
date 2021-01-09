@@ -1,6 +1,6 @@
 package com.onlinetaxi.userauthority.role.entity.dto;
 
-import com.jzh.online.taxi.commonsdk.entity.BaseDTO;
+import com.jzh.online.taxi.commonsdk.entity.BaseInDTO;
 import lombok.*;
 
 import javax.validation.constraints.Size;
@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class RoleInput extends BaseDTO {
+public class RoleInput extends BaseInDTO {
     @NonNull
     @Size(min = 1, max = 50)
     private String roleName;
