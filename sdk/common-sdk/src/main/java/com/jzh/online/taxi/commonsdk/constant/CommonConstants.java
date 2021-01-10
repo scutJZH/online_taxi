@@ -1,10 +1,6 @@
 package com.jzh.online.taxi.commonsdk.constant;
 
-import java.util.regex.Pattern;
-
 public class CommonConstants {
-    private CommonConstants() {}
-
     /**
      * 间隔符
      */
@@ -39,4 +35,19 @@ public class CommonConstants {
      * 最大查询数量
      */
     public static final int MAX_IN_SIZE = 1000;
+
+    /**
+     * 系统通用异常code
+     */
+    public static final int EXCEPTION_CODE = -2;
+
+    /**
+     * 系统通用异常message
+     */
+    public static final String EXCEPTION_MSG = "系统内部错误";
+
+    /**
+     * 方法参数缺失异常code
+     */
+    public static final int METHOD_ARG_EX_CODE = -1;
 }

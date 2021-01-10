@@ -29,4 +29,10 @@ public interface IRoleService {
      * @return
      */
     PageResult<RoleDTO> page(RoleQuery query);
+
+    /**
+     * 更新角色信息
+     * @param roleInput
+     */
+    void updateRole(RoleInput roleInput);
 }

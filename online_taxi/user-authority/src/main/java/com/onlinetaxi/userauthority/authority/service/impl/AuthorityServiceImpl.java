@@ -10,8 +10,7 @@ import com.jzh.online.taxi.commonsdk.entity.PageResult;
 import com.jzh.online.taxi.commonsdk.exception.RestException;
 import com.onlinetaxi.userauthority.authority.dao.IAuthorityDAO;
 import com.onlinetaxi.userauthority.authority.entity.AuthorityQuery;
-import com.onlinetaxi.userauthority.authority.entity.bo.Authority;
-import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInInDTO;
+import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInDTO;
 import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityDTO;
 import com.onlinetaxi.userauthority.authority.entity.po.AuthorityPO;
 import com.onlinetaxi.userauthority.authority.service.IAuthorityService;
@@ -35,7 +34,7 @@ AuthorityServiceImpl implements IAuthorityService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void createAuthority(AuthorityInInDTO authorityInDTO) throws RestException {
+    public void createAuthority(AuthorityInDTO authorityInDTO) throws RestException {
         // 校验权限名称是否符合规则
         if (!UserAuthorityConstants.UPPERCASE_AND_UNDERLINE_PATTERN.matcher(authorityInDTO.getAuthorityName()).matches()) {
             throw new RestException(ErrorCodeEnum.INVALID_AUTHORITY_NAME.getCode(), ErrorCodeEnum.INVALID_AUTHORITY_NAME.getDesc());
@@ -77,7 +76,7 @@ AuthorityServiceImpl implements IAuthorityService {
      * @param authorityInDTO
      * @return
      */
-    private AuthorityPO generateNewAuthority(AuthorityInInDTO authorityInDTO) {
+    private AuthorityPO generateNewAuthority(AuthorityInDTO authorityInDTO) {
         AuthorityPO authorityPO = new AuthorityPO().toBuilder().id(UUID.randomUUID().toString())
                 .authorityName(authorityInDTO.getAuthorityName()).description(authorityInDTO.getDescription()).build();
         authorityPO.initPO(authorityInDTO);

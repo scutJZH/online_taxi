@@ -5,7 +5,7 @@ import com.jzh.online.taxi.commonsdk.entity.PageResult;
 import com.jzh.online.taxi.commonsdk.entity.RespResult;
 import com.jzh.online.taxi.commonsdk.exception.RestException;
 import com.onlinetaxi.userauthority.authority.entity.AuthorityQuery;
-import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInInDTO;
+import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInDTO;
 import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityDTO;
 import com.onlinetaxi.userauthority.authority.service.IAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class AuthorityController {
     private IAuthorityService authorityService;
 
     @PostMapping("/v1/authority")
-    public RespResult<Void> createAuthority(@Valid @RequestBody AuthorityInInDTO authorityInDTO) throws RestException {
+    public RespResult<Void> createAuthority(@Valid @RequestBody AuthorityInDTO authorityInDTO) throws RestException {
         authorityService.createAuthority(authorityInDTO);
         return new RespResult<>();
     }

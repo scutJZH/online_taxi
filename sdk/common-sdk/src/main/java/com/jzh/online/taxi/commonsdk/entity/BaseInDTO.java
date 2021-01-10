@@ -3,12 +3,15 @@ package com.jzh.online.taxi.commonsdk.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseInDTO {
-    @NonNull
+    @Valid
+    @NotNull
     private Operator operator;
 }

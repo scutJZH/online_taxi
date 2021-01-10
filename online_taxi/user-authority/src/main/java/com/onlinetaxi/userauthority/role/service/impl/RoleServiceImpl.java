@@ -90,6 +90,11 @@ public class RoleServiceImpl implements IRoleService {
         return null;
     }
 
+    @Override
+    public void updateRole(RoleInput roleInput) {
+
+    }
+
     /**
      * 生成新的角色PO
      * @param roleInput

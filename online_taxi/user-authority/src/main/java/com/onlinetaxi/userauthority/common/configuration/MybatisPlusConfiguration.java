@@ -6,5 +6,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @MapperScan(basePackages = "com.onlinetaxi.userauthority.**.dao")
 public class MybatisPlusConfiguration {
-
 }

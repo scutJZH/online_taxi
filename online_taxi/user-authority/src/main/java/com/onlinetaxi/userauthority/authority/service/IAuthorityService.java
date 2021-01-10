@@ -3,8 +3,7 @@ package com.onlinetaxi.userauthority.authority.service;
 import com.jzh.online.taxi.commonsdk.entity.PageResult;
 import com.jzh.online.taxi.commonsdk.exception.RestException;
 import com.onlinetaxi.userauthority.authority.entity.AuthorityQuery;
-import com.onlinetaxi.userauthority.authority.entity.bo.Authority;
-import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInInDTO;
+import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityInDTO;
 import com.onlinetaxi.userauthority.authority.entity.dto.AuthorityDTO;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public interface IAuthorityService {
      * @param authorityInDTO
      * @throws RestException
      */
-    void createAuthority(AuthorityInInDTO authorityInDTO) throws RestException;
+    void createAuthority(AuthorityInDTO authorityInDTO) throws RestException;
 
     /**
      * 按权限id列表获取权限列表
