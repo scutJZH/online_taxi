@@ -50,4 +50,12 @@ public class CommonConstants {
      * 方法参数缺失异常code
      */
     public static final int METHOD_ARG_EX_CODE = -1;
+
+    /**
+     * 时间格式相关
+     */
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String LOCAL_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String LOCAL_DATE_FORMAT = "yyyy-MM-dd";
+    public static final String LOCAL_TIME_FORMAT = "HH:mm:ss";
 }
