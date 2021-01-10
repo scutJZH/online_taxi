@@ -30,7 +30,8 @@ public class ObjectMapperConfig {
         ObjectMapper objectMapper = new ObjectMapper();
         // 统一返回数据的输出风格
         objectMapper.setPropertyNamingStrategy(new PropertyNamingStrategy.SnakeCaseStrategy());
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        // 忽略null的字段
+//        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         // 时间格式

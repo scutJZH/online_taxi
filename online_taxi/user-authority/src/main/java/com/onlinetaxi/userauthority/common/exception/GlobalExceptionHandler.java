@@ -1,4 +1,4 @@
-package com.onlinetaxi.userauthority.common.controller;
+package com.onlinetaxi.userauthority.common.exception;
 
 import com.jzh.online.taxi.commonsdk.constant.CommonConstants;
 import com.jzh.online.taxi.commonsdk.entity.RespResult;
@@ -22,10 +22,10 @@ public class GlobalExceptionHandler {
     public void initBinder(WebDataBinder binder) {}
 
     @ExceptionHandler(RestException.class)
-    public RespResult<Void> restExceptionHandler(RestException restException) {
+    public RespResult<Void> restExceptionHandler(RestException e) {
         RespResult<Void> respResult = new RespResult<>();
-        respResult.setCode(restException.getCode());
-        respResult.setMessage(restException.getMessage());
+        respResult.setCode(e.getCode());
+        respResult.setMessage(String.format(e.getMessage(), e.getParams()));
         return respResult;
     }
 
