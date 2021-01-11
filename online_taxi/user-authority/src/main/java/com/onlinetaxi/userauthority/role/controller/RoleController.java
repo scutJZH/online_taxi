@@ -21,9 +21,9 @@ public class RoleController {
         return new RespResult<>();
     }
 
-    @PutMapping("/v1/role")
-    public RespResult<Void> updateRole(@Valid @RequestBody RoleInput roleInput) {
-        roleService.updateRole(roleInput);
+    @PutMapping("/v1/role/{role_id}")
+    public RespResult<Void> updateRole(@PathVariable("role_id") String roleId, @Valid @RequestBody RoleInput roleInput) {
+        roleService.updateRole(roleId, roleInput);
         return new RespResult<>();
     }
 }

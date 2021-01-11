@@ -37,11 +37,21 @@
         SELECT <include refid="roleFields"/>, <include refid="authorityFields"/>
         FROM `ROLE` LEFT JOIN ROLE_AUTHORITY_RELATION ON `ROLE`.ID = ROLE_AUTHORITY_RELATION.ROLE_ID
             LEFT JOIN AUTHORITY ON ROLE_AUTHORITY_RELATION.AUTHORITY_ID = AUTHORITY.ID AND AUTHORITY.IS_DELETED = 0
-        WHERE
+        <where>
             `ROLE`.IS_DELETED = 0
             AND `ROLE`.ID IN
             <foreach collection="roleIds" item="roleId" index="index" open="(" separator="," close=")">
                 #{roleId}
             </foreach>
+        </where>
+    </select>
+
+    <select id="listRoleByConditions">
+        SELECT <include refid="roleFields"/>, <include refid="authorityFields"/>
+        FROM `ROLE` LEFT JOIN ROLE_AUTHORITY_RELATION ON `ROLE`.ID = ROLE_AUTHORITY_RELATION.ROLE_ID
+        LEFT JOIN AUTHORITY ON ROLE_AUTHORITY_RELATION.AUTHORITY_ID = AUTHORITY.ID AND AUTHORITY.IS_DELETED = 0
+        <where>
+            `ROLE`.IS_DELETED = 0
+        </where>
     </select>
 </mapper>

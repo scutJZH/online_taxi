@@ -12,7 +12,8 @@ public enum ErrorCodeEnum {
      * 角色相关
      */
     INVALID_ROLE_NAME(2001, "无效的角色名称"),
-    ROLE_NAME_ALREADY_EXISTS(2002, "角色名称已经存在"),
+    ROLE_NAME_ALREADY_EXISTED(2002, "角色名称已经存在"),
+    ROLE_NOT_EXISTS(2003, "id为%s的角色不存在"),
     ;
 
     private Integer code;

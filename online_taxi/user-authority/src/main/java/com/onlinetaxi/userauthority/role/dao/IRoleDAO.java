@@ -1,6 +1,7 @@
 package com.onlinetaxi.userauthority.role.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.onlinetaxi.userauthority.role.entity.RoleQuery;
 import com.onlinetaxi.userauthority.role.entity.dto.RoleDTO;
 import com.onlinetaxi.userauthority.role.entity.po.RolePO;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,11 @@ public interface IRoleDAO extends BaseMapper<RolePO> {
      * @return
      */
     List<RoleDTO> listRoleByIds(@Param("roleIds") List<String> roleIds);
+
+    /**
+     * 通过条件查询角色列表
+     * @param query
+     * @return
+     */
+    List<RoleDTO> listRoleByConditions(@Param("query") RoleQuery query);
 }

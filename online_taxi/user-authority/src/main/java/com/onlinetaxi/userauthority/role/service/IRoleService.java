@@ -32,7 +32,8 @@ public interface IRoleService {
 
     /**
      * 更新角色信息
+     * @param roleId
      * @param roleInput
      */
-    void updateRole(RoleInput roleInput);
+    void updateRole(String roleId, RoleInput roleInput) throws RestException;
 }
